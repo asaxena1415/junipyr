@@ -106,7 +106,23 @@
         </div>
 
     </div>
-    <script src="js/main.js"></script>
+    <script>
+      function generate() {
+        var ajax = new XMLHttpRequest();
+        ajax.open("POST", "/api/generate", true);
+
+        ajax.onreadystatechange = function () {
+          var data = JSON.parse(this.responseText);
+          CodeValue(data);
+        }
+
+       var formData = new FormData();
+       var prompt = document.getElementById("elemprompt").value;
+       formData.append("prompt", prompt);
+       ajax.send(formData);
+      }
+    </script>
+    <script src="/js/main.js"></script>
 </body>
 
 </html>

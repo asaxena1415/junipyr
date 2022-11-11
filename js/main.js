@@ -2,11 +2,7 @@ $(document).ready(function () {
   // getting value
   $('#preview').on('click', function () {
     let promptval = $('#elemprompt').val();
-    if (promptval == '') {
-      console.log('value is empty')
-    } else {
-      console.log('contain values')
-    }
+    alert(promptval);
   })
 
   // preview the default value
@@ -43,10 +39,6 @@ function CodeValue(val) {
 function heading() {
   var html = "<h1>This is a Heading</h1>" + "\n";
   CodeValue(html);
-}
-
-function generate() {
-  alert('ds');
 }
 
 function form() {
