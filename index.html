@@ -5,59 +5,98 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Junipyr</title>
+    <title>Junipr</title>
 
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script src="codemirror/lib/codemirror.js"></script>
+    <link href="codemirror/lib/codemirror.css" rel="stylesheet">
+    <script src="codemirror/mode/xml/xml.js"></script>
+    <script src="codemirror/addon/edit/closetag.js"></script>
+
+    <link href="codemirror/theme/dracula.css" rel="stylesheet">
+    <!-- <link href="codemirror/theme/twilight.css" rel="stylesheet"> -->
+
+    <!-- <link href="codemirror/theme/neo.css" rel="stylesheet"> -->
+
+
 
 </head>
 
 
 <body class="min-h-screen">
 
-    <div class=" fixed w-full h-15 bg-slate-50 border-b border-black-200 p-3">
+    <div id="nav" class=" fixed w-full h-15 bg-slate-50 border-b border-black-200 p-3">
 
-        <div class="flex justify-center relative">
-            <div class="w-1/2">
+        <div id="direction" class=" flex justify-center relative">
+            <div id="main" class="w-1/2">
                 <textarea id="elemprompt" class="resize-none custom-input w-full border border-gray-300 px-3  py-2 rounded-lg
                 shadow-sm focus:outline-none  focus:border-indigo-500 h-12 focus:ring-1 transition-shadow
-                delay-100" name="" placeholder="Enter prompt ..." id="" cols="30" rows="4"></textarea>
+                delay-100" name="" id="" cols="30" placeholder="Enter prompt ..." rows="4"></textarea>
             </div>
             <button id="preview" type="submit" class="absolute right-0 text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
                 preview</button>
         </div>
     </div>
     <div class="flex">
-        <div class=" w-64">
-            <div class="text-gray-800  h-screen pt-28 pl-10 shadow-gray-800">
+        <div id="width-none" class=" w-64">
+            <div id="sidebar" class="text-gray-800  h-screen pt-28 pl-10 shadow-gray-800">
                 <h1 class="text-lg font-bold"> Hierachy of components</h1>
                 <ul>
                     <li class="mt-5">
-                        <span class="border-b border-gray-200 font-medium">Promt Box:</span>
+                        <span class="border-b border-gray-200 font-medium">Header</span>
                         <ul class=" list-mega">
-                            <li >input text</li>
-                            <li >Button</li>
-                            <li >Image</li>
-                            <li>Heading</li>
+                            <li OnClick="image();">Image</li>
+                            <li>Description</li>
+                            <li OnClick="heading();">Heading</li>
                         </ul>
                     </li>
+                    <li class="mt-5">
+                        <span class="border-b border-gray-200 font-medium">Body</span>
+                        <ul class=" list-mega">
+                            <li OnClick="form();">Form
+                            <ul class=" list-mega">
+                                <li>Input name</li>
+                                <li>Input email</li>
+                                <li>Submit button</li>
+                              </ul></li>
+                        </ul>
+                    </li>
+                    <li class="mt-5">
+                        <span class="border-b border-gray-200 font-medium">Footer</span>
+                        <ul class=" list-mega">
+                          <li>Connect to Google Sheets</li>
+                        </ul>
+                      </li>
                     <li class="mt-5 text-lg font-medium">Preview</li>
                 </ul>
 
             </div>
         </div>
-        <div class="  mt-20 w-full">
-            <div class="flex mt-10 ">
-                <div class="w-2/5">
-<textarea  id="form" class="elemheight code-family resize-none custom-input w-full border border-gray-300 px-3  py-2 rounded-lg
+        <div id="p-3" class="  mt-20 w-full">
+            <div id="text-sm"class="flex mt-10 ">
+                <div id="code" class="w-2/5">
+<textarea id="editor" class="elemheight code-family resize-none custom-input w-full border border-gray-300 px-3  py-2 rounded-lg
                    shadow-sm focus:outline-none  focus:border-indigo-500 focus:ring-1 transition-shadow
                    delay-100 ml-4" name="" id="name" cols="30" rows="10">
-&lt;!--
- === write code here ===
---&gt;</textarea>
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 data="heading">This is some Heading</h1>
+    </body>
+</html>
+</textarea>
                 </div>
-                <div id="text" class="elemheight text-zinc-400 p-8 rounded-lg w-3/5 mr-2 ml-5">
+                <div id="text" class="previewpane elemheight  p-8 rounded-lg w-3/5 mr-4 ml-8">
                     <div class="w-full">
                         <h1> preview</h1>
                     </div>
