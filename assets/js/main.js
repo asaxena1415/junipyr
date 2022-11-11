@@ -45,10 +45,6 @@ function heading() {
   CodeValue(html);
 }
 
-function generate() {
-  alert('ds');
-}
-
 function form() {
   var html = `<form>
 
