@@ -42,7 +42,7 @@
     <div class="flex">
         <div id="width-none" class=" w-64">
             <div id="sidebar" class="text-gray-800  h-screen pt-28 pl-10 shadow-gray-800">
-                <h1 class="text-lg font-bold">Components</h1>
+                <!-- <h1 class="text-lg font-bold">Components</h1>
                 <ul>
                     <li class="mt-5">
                         <span class="border-b border-gray-200 font-medium">Header</span>
@@ -69,8 +69,8 @@
                           <li>Connect to Google Sheets</li>
                         </ul>
                       </li>
-                    <li class="mt-5 text-lg font-medium">Preview</li>
-                </ul>
+                    <li class="mt-5 text-lg font-medium">Preview</li> -->
+                <!-- </ul> -->
 
             </div>
         </div>
@@ -108,18 +108,29 @@
     </div>
     <script>
       function generate() {
-        var ajax = new XMLHttpRequest();
-        ajax.open("POST", "/api/generate", true);
+       //  var ajax = new XMLHttpRequest();
+       //  ajax.open("POST", "/api/generate", true);
+       //
+       //  ajax.onreadystatechange = function () {
+       //    var data = JSON.parse(this.responseText);
+       //    CodeValue(data);
+       //    document.getElementById('text').innerHTML = data;
+       //  }
+       //
+       // var formData = new FormData();
+       // formData.append("prompt1", document.getElementById('elemprompt').value);
+       // ajax.send(formData);
 
-        ajax.onreadystatechange = function () {
-          var data = JSON.parse(this.responseText);
-          CodeValue(data);
-        }
-
-       var formData = new FormData();
-       var prompt = document.getElementById("elemprompt").value;
-       formData.append("prompt", prompt);
-       ajax.send(formData);
+       var xhr = new XMLHttpRequest();
+xhr.open('POST', '/api/generate', true);
+xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+xhr.onload = function () {
+    // do something to response
+    var data = JSON.parse(this.responseText);
+    CodeValue(data);
+    document.getElementById('text').innerHTML = data;
+};
+xhr.send('prompt1='+document.getElementById('elemprompt').value);
       }
     </script>
     <script src="/js/main.js"></script>

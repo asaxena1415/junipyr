@@ -1,9 +1,4 @@
 $(document).ready(function () {
-  // getting value
-  $('#preview').on('click', function () {
-    let promptval = $('#elemprompt').val();
-    alert(promptval);
-  })
 
   // preview the default value
   let editorval = $('#editor').val();

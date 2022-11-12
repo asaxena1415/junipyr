@@ -2,10 +2,14 @@ const express = require('express');
 const path = require('path');
 const axios = require('axios');
 const { all } = require('async');
+const bodyparser = require('body-parser');
 
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.use(bodyparser.urlencoded({ extended : true}));
+
 app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
@@ -13,20 +17,20 @@ app.get('/', (req, res) => {
 });
 
 app.post('/api/generate', async (req, res) => {
-  const prompt = req.fields.prompt;
 
+  const prompt = req.body.prompt1;
   const { Configuration, OpenAIApi } = require("openai");
   const configuration = new Configuration({
-    apiKey: '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',
+    apiKey: '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',
   });
   const openai = new OpenAIApi(configuration);
 
   const response = await openai.createCompletion({
     model: "text-davinci-002",
     prompt: prompt,
-    temperature: 0.7,
-    max_tokens: 4000,
-    top_p: 0,
+    temperature: 0.04,
+    max_tokens: 256,
+    top_p: 1,
     frequency_penalty: 0,
     presence_penalty: 0,
   });
@@ -42,3 +46,6 @@ const port = 3000;
 app.listen(port, () => {
   console.log(`serve at http://localhost:${port}`);
 });
+
+// create image with unsplash in HTML
+// create list of paul graham top 10 essays with links with HTML formatting
